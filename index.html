@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<style>
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    div {
+        width: 100%;
+        padding: 100px;
+    }
+
+
+    .one {
+        background: thistle;
+    }
+
+    .two {
+        background: mistyrose;
+    }
+
+    .three {
+        background: pink;
+    }
+
+    button {
+        border: none;
+        padding: 5px;
+        background: #758594;
+    }
+</style>
+
+<body>
+
+    <div class="one">
+        <div class="two">
+            <div class="three">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn">click me once </button>
+
+    <script>
+        var divs = document.querySelectorAll('div');
+        var btn = document.querySelector('.btn');
+
+        function logText(e) {
+            e.stopPropagation();
+            console.log(this);
+        }
+
+        divs.forEach(div => div.addEventListener("click", logText, {
+
+        }));
+
+        function showText() {
+            console.log("i will be clicked only once  ");
+        }
+
+        btn.addEventListener("click", showText, {
+            once: true
+        });
+    </script>
+
+</body>
+
+</html>
